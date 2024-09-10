@@ -1,0 +1,51 @@
+.contact-container {
+    margin-top: 5em;
+    padding: 1em;
+}
+
+.contact-container h2{
+    color: black;
+    text-align: center;
+    /* margin-top: 0.3em; */
+    margin-bottom: 0.5em;
+}
+
+.contact-box{
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    padding: 1.5em;
+    margin: auto;
+}
+
+.contact-list {
+    list-style-type: none;
+}
+
+.contact-item {
+    margin: 1.5em;
+}
+
+.contact-item input{
+    width: 25em;
+    height: 2em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0.7em;
+    font-size: small;
+    border: black solid 0.1em;
+    border-radius: 0.3em;
+}
+
+.contact-item textarea{
+    /* width: 25em;
+    height: 6em; */
+    width: 90%;
+    height: 50%;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0.7em;
+    font-size: medium;
+    border: black solid 0.1em;
+    border-radius: 0.3em;
+}

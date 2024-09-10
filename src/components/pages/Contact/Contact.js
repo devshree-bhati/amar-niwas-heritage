@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import emailjs from '@emailjs/browser'
-import './Contact.css';
+import './Contact.css'
 
 const Contact = () => {
   const [name, setName] = useState('')
@@ -10,36 +10,43 @@ const Contact = () => {
   const [statusMessage, setStatusMessage] = useState('')
 
   const sentEmail = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    emailjs.sendForm('service_2vk1jnd', 'template_86c06t9', e.target, {
-      publicKey: 'G3rLFiM85KA9m2WSf',
-    })
-    .then(
-      (result) => {
-      console.log(result.test);
-      setStatusMessage('Message sent successfully!');
-    },
-    (error) => {
-      console.log(error.text);
-      setStatusMessage('Failed to sent message. Please try again later.');
-    });    
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+        e.target,
+        {
+          publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY,
+        }
+      )
+      .then(
+        (result) => {
+          console.log(result.test)
+          setStatusMessage('Message sent successfully!')
+        },
+        (error) => {
+          console.log(error.text)
+          setStatusMessage('Failed to sent message. Please try again later.')
+        }
+      )
 
-    setName('');
-    setEmail('');
-    setPhone('');
-    setMessage('');
-  };
+    setName('')
+    setEmail('')
+    setPhone('')
+    setMessage('')
+  }
 
   return (
-    <div className='contact-container'>
+    <div className="contact-container">
       <h2>CONTACT FORM</h2>
       <div className="contact-box">
         <form onSubmit={sentEmail}>
-          <ul className='contact-list'>
-            <li className='contact-item'>
+          <ul className="contact-list">
+            <li className="contact-item">
               <label htmlFor="name">NAME</label>
-              <br/>
+              <br />
               <input
                 type="text"
                 name="name"
@@ -52,9 +59,9 @@ const Contact = () => {
                 required
               />
             </li>
-            <li className='contact-item'>
+            <li className="contact-item">
               <label htmlFor="email">EMAIL</label>
-              <br/>
+              <br />
               <input
                 type="email"
                 name="email"
@@ -67,9 +74,9 @@ const Contact = () => {
                 required
               />
             </li>
-            <li className='contact-item' >
+            <li className="contact-item">
               <label htmlFor="phone">PHONE NO</label>
-              <br/>
+              <br />
               <input
                 type="tel"
                 name="phone"
@@ -82,9 +89,9 @@ const Contact = () => {
                 required
               />
             </li>
-            <li className='contact-item' >
+            <li className="contact-item">
               <label htmlFor="message">MESSAGE</label>
-              <br/>
+              <br />
               <textarea
                 name="message"
                 id="message"
@@ -92,19 +99,19 @@ const Contact = () => {
                 onChange={(e) => {
                   setMessage(e.target.value)
                 }}
-                placeholder='YOUR MESSAGE'
+                placeholder="YOUR MESSAGE"
                 required
               ></textarea>
             </li>
             <li>
-              <button type='submit'>Send</button>
+              <button type="submit">Send</button>
             </li>
           </ul>
         </form>
         {statusMessage && <p>{statusMessage}</p>}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
